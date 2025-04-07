@@ -1,0 +1,34 @@
+/* Option 1: Use System-installed Futura or Fallback Fonts */
+body {
+  margin: 0;
+  font-family: 'Futura', 'Trebuchet MS', 'Arial', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: 'Futura', source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Option 2: Use a Free Google Font Alternative */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap');
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+
+/* Option 3: Use an Online CDN (If Available) */
+/* Uncomment and replace the URL if you find a valid Futura CDN */
+/* @import url('https://db.onlinewebfonts.com/c/abc123.css'); */
+
+/* Option 4: Custom Font (If You Add Files to Public Folder) */
+/* Uncomment if you have Futura font files */
+/* @font-face {
+  font-family: 'Futura';
+  src: url('/fonts/Futura.woff2') format('woff2'),
+       url('/fonts/Futura.woff') format('woff'),
+       url('/fonts/Futura.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+} */

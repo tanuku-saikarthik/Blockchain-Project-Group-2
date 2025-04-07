@@ -1,0 +1,370 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 280px;
+    background: #000;
+    color: white;
+    height: 100vh;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+/* Sidebar Links */
+.sidebar ul li {
+    margin: 10px 0;
+    transition: all 0.3s;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 10px;
+    display: block;
+    border-radius: 8px;
+    transition: all 0.3s;
+    outline: none;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a:focus,
+.sidebar ul li a:active {
+    outline: none;
+    background-color: black;
+    transform: scale(1.05);
+    box-shadow: 0 0 5px #aaa;
+}
+
+/* Main Content Styling */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 300px; /* Adjust if sidebar width changes */
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-content h2 {
+    margin-top: 40px;
+    font-size: 35px;
+}
+
+.header h1 {
+    font-size: 2rem;
+}
+
+/* Menu Button Styling */
+.menu-btn {
+    display: none;
+    font-size: 24px;
+    background: #f0f0f0;
+    color: black;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1100;
+    outline: none;
+}
+
+.menu-btn:hover,
+.menu-btn:focus,
+.menu-btn:active {
+    opacity: 0;
+}
+
+/* Close Button Styling */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: none;
+    outline: none;
+    transition: opacity 0.3s;
+}
+
+.welcome h2 {
+    text-align: center;
+    margin-top: 35px;
+    font-size: 35px;
+}
+
+.welcome p {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+/* Filter and Search Styling */
+.filter-section {
+    margin: 20px 0;
+    display: flex;
+    gap: 15px;
+}
+
+.filter-section input,
+.filter-section select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Table Styling for Transactions */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background-color: #333;
+    color: white;
+}
+
+/* Action Buttons */
+td button {
+    padding: 6px 12px;
+    margin: 3px;
+    border: none;
+    border-radius: 5px;
+    background-color: #008cba;
+    color: white;
+    cursor: pointer;
+}
+
+td button:hover {
+    background-color: #005f7f;
+}
+
+td button:active {
+    background-color: #004d66;
+}
+
+/* Second button styling (e.g., Reject) */
+td button:nth-child(2) {
+    background-color: #e74c3c;
+}
+
+td button:nth-child(2):hover {
+    background-color: #c0392b;
+}
+
+td button:nth-child(2):active {
+    background-color: #a93226;
+}
+
+tr {
+    background-color: #fff;
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect for rows */
+tr:hover {
+    transform: scale(1.02);
+}
+
+.transaction-cards {
+    display: none;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 220px;
+        left: -220px;
+    }
+
+    .sidebar h2 {
+        font-size: 17px;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    .close-btn {
+        display: block;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .main-content h2 {
+        margin-top: 20px;
+        font-size: 20px;
+    }    
+
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .sidebar ul li a {
+        font-size: 16px;
+        padding: 6px 8px;
+    }
+
+    .welcome h2 {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 21px;
+    }
+
+    .welcome p {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 11px;
+    }
+    
+    /* Hide the table for small screens */
+    table {
+        display: none;
+    }
+    
+    /* Card layout for transactions */
+    .transaction-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+    
+    .transaction-card {
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 8px;
+        background-color: #fff;
+    }
+    
+    .transaction-card h3 {
+        margin-bottom: 10px;
+    }
+    
+    .transaction-card p {
+        margin: 5px 0;
+    }
+    
+    .transaction-card .card-actions {
+        margin-top: 10px;
+        display: flex;
+        gap: 10px;
+    }
+    
+    .transaction-card .card-actions button {
+        flex: 1;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+    }
+    
+    .transaction-card .card-actions button:first-child {
+        background-color: #008cba;
+    }
+    
+    .transaction-card .card-actions button:first-child:hover {
+        background-color: #005f7f;
+    }
+    
+    .transaction-card .card-actions button:first-child:active {
+        background-color: #004d66;
+    }
+    
+    .transaction-card .card-actions button:nth-child(2) {
+        background-color: #e74c3c;
+    }
+    
+    .transaction-card .card-actions button:nth-child(2):hover {
+        background-color: #c0392b;
+    }
+    
+    .transaction-card .card-actions button:nth-child(2):active {
+        background-color: #a93226;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 200px;
+        left: -200px;
+    }
+
+    .sidebar h2 {
+        font-size: 17px;
+    }
+
+    .main-content h2 {
+        margin-top: 20px;
+        font-size: 20px;
+    }    
+
+    .header h1 {
+        font-size: 1.2rem;
+    }
+
+    table {
+        display: none;
+    }
+
+    .close-btn {
+        display: block;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .sidebar ul li a {
+        font-size: 14px;
+        padding: 5px 6px;
+    }
+}

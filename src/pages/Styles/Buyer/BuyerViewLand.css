@@ -1,0 +1,272 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background: #000;
+    color: white;
+    height: 100vh;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+    transition: all 0.3s;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 10px;
+    display: block;
+    border-radius: 8px;
+    transition: all 0.3s;
+    outline: none;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a:focus,
+.sidebar ul li a:active {
+    outline: none;
+    background-color: black;
+    transform: scale(1.05);
+    box-shadow: 0 0 5px #aaa;
+}
+
+.menu-btn {
+    display: none;
+    font-size: 24px;
+    background: #f0f0f0;
+    color: black;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1100;
+    outline: none;
+}
+
+.menu-btn:hover,
+.menu-btn:focus,
+.menu-btn:active {
+    opacity: 0;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: none;
+    outline: none;
+    transition: opacity 0.3s;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 270px;
+    transition: all 0.3s;
+}
+
+.header {
+    text-align: center;
+    margin: 40px 0;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.grid-item {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 300px;
+}
+
+.grid-item:hover {
+    transform: scale(1.05);
+}
+
+.grid-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    text-align: center;
+    position: relative;
+}
+
+.modal-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.search-bar {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.search-bar input {
+    padding: 10px;
+    width: 80%;
+    max-width: 400px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+        left: -200px;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    .sidebar h2 {
+        font-size: 17px;
+    }
+
+    .sidebar ul li a {
+        font-size: 16px;
+        padding: 6px 8px;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .close-btn {
+        display: block;
+    }
+
+    .header {
+        font-size: 22px;
+        margin: 20px 0;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 180px;
+        left: -180px;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    .sidebar h2 {
+        font-size: 17px;
+    }
+
+    .sidebar ul li a {
+        font-size: 14px;
+        padding: 5px 6px;
+    }
+
+    .header {
+        font-size: 22px;
+        margin: 10px 0;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .close-btn {
+        display: block;
+    }
+}
+
+
+
+
+

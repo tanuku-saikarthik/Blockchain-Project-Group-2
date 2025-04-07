@@ -1,0 +1,272 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    background: #000;
+    color: #fff;
+    height: 100vh;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+    transition: all 0.3s;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 10px;
+    display: block;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a:focus,
+.sidebar ul li a:active {
+    background-color: #333;
+    transform: scale(1.05);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.sidebar ul li.active a {
+    font-weight: bold;
+}
+
+/* Menu Button Styling */
+.menu-btn {
+    display: none;
+    font-size: 24px;
+    background: #f0f0f0;
+    color: #000;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1100;
+}
+
+.menu-btn:hover,
+.menu-btn:focus,
+.menu-btn:active {
+    opacity: 0;
+}
+
+/* Close Button Styling */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+    transition: opacity 0.3s;
+}
+
+/* Main Content Styling */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 270px;
+    /* increased margin for separation */
+    margin-right: 20px;
+    transition: all 0.3s;
+}
+
+.main-content h2 {
+    margin: 40px 0;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Profile Card Styling */
+.profile-card {
+    background: #fff;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+}
+
+.profile-header {
+    margin-bottom: 20px;
+}
+
+.profile-header h2 {
+    margin: 10px 0;
+    color: #333;
+}
+
+.profile-header p {
+    color: gray;
+}
+
+.profile-details {
+    text-align: left;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f7f7f7;
+}
+
+.profile-details div {
+    margin: 10px 0;
+}
+
+.logout-btn {
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+        left: -200px;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    .sidebar h2 {
+        font-size: 15px;
+    }
+
+    .sidebar ul li a {
+        font-size: 12px;
+    }
+
+    .main-content {
+        margin-left: 10px;
+        margin-top: 40px;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .close-btn {
+        display: block;
+    }
+
+    .profile-card {
+        padding: 20px;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 180px;
+        left: -180px;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    .sidebar h2 {
+        font-size: 15px;
+    }
+
+    .sidebar ul li a {
+        font-size: 12px;
+    }
+
+    .main-content {
+        margin-left: 10px;
+        margin-top: 40px;
+    }
+
+    .profile-card {
+        padding: 15px;
+        max-width: 100%;
+        margin: 20px auto;
+    }
+
+    .profile-card h2 {
+        font-size: 1rem;
+    }
+
+    .profile-card p {
+        font-size: 0.8rem;
+    }
+
+    .profile-details div {
+        font-size: 0.75rem;
+    }
+
+    .profile-details div strong {
+        font-size: 0.75rem;
+    }
+
+    .profile-details div:last-child {
+        font-size: 0.70rem;
+        word-break: break-all;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .close-btn {
+        display: block;
+    }
+
+    .logout-btn {
+        font-size: 0.75rem;
+        padding: 8px 16px;
+    }
+}

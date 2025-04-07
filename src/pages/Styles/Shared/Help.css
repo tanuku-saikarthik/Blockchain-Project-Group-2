@@ -1,0 +1,364 @@
+/* .help-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.help-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.help-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.help-header p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.help-content {
+    width: 90%;
+    max-width: 800px;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.faq-section,
+.dispute-section,
+.contact-section {
+    margin-bottom: 2rem;
+}
+
+.faq-section h2,
+.dispute-section h2,
+.contact-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 0.5rem;
+    color: #007bff;
+}
+
+.faq-list {
+    list-style: none;
+    padding: 0;
+}
+
+.faq-list li {
+    margin-bottom: 1rem;
+    background-color: #f1f1f1;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+.faq-list li strong {
+    color: #333;
+}
+
+.dispute-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.dispute-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.dispute-form input,
+.dispute-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+.contact-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-section li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: #333;
+}
+
+@media (max-width: 600px) {
+    .help-page {
+        padding: 1rem;
+    }
+    
+    .help-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .help-header p {
+        font-size: 0.9rem;
+    }
+    
+    .help-content {
+        width: 100%;
+        padding: 1rem;
+    }
+    
+    .faq-section h2,
+    .dispute-section h2,
+    .contact-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .dispute-form input,
+    .dispute-form textarea {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+    
+    .submit-btn {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+} */
+
+
+
+
+
+
+
+
+
+/* Basic reset and font setup */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+  }
+  
+  /* Main container for the help page */
+  .help-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+  
+  /* Header styles */
+  .help-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .help-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .help-header p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* Content wrapper */
+  .help-content {
+    width: 100%;
+    max-width: 800px;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  /* Section headings */
+  .faq-section,
+  .dispute-section,
+  .contact-section {
+    margin-bottom: 2rem;
+  }
+  
+  .faq-section h2,
+  .dispute-section h2,
+  .contact-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 0.5rem;
+  }
+  
+  /* Accordion FAQ styles */
+  .faq-item {
+    background-color: #f1f1f1;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .faq-item:hover {
+    background-color: #e8e8e8;
+  }
+  
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .faq-toggle {
+    margin-left: 1rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .faq-answer {
+    margin-top: 0.5rem;
+    color: #555;
+    line-height: 1.4;
+  }
+  
+  /* Dispute form */
+  .dispute-form .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .dispute-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .dispute-form input,
+  .dispute-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .submit-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Contact section */
+  .contact-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .contact-section li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  /* -----------------------------
+     Responsive (Small Screens)
+     ----------------------------- */
+  @media (max-width: 600px) {
+    .help-page {
+      padding: 1rem;
+    }
+  
+    .help-header h1 {
+      font-size: 1.5rem;
+    }
+  
+    .help-header p {
+      font-size: 0.9rem;
+    }
+  
+    .help-content {
+      padding: 1rem;
+    }
+  
+    .faq-section h2,
+    .dispute-section h2,
+    .contact-section h2 {
+      font-size: 1.3rem;
+    }
+  
+    .faq-item {
+      padding: 0.75rem;
+    }
+  
+    .faq-question {
+      font-size: 0.95rem;
+    }
+  
+    .faq-toggle {
+      font-size: 1rem;
+    }
+  
+    .faq-answer {
+      font-size: 0.9rem;
+    }
+  
+    .dispute-form input,
+    .dispute-form textarea {
+      font-size: 0.9rem;
+      padding: 0.5rem;
+    }
+  
+    .submit-btn {
+      font-size: 0.9rem;
+      padding: 0.5rem;
+    }
+  }
+  

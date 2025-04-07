@@ -1,0 +1,202 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.GovDash-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f0f0f0;
+}
+
+.GovDash-page .container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.GovDash-page .sidebar {
+    width: 280px;
+    background: #000;
+    color: white;
+    height: 100vh;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.GovDash-page .sidebar h2 {
+    margin-bottom: 20px;
+    color: white;
+}
+
+.GovDash-page .sidebar ul {
+    list-style: none;
+}
+
+.GovDash-page .sidebar ul li {
+    margin: 10px 0;
+    transition: all 0.3s;
+}
+
+.GovDash-page .sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 10px;
+    display: block;
+    border-radius: 8px;
+    transition: all 0.3s;
+    outline: none;
+}
+
+.GovDash-page .sidebar ul li a:hover,
+.GovDash-page .sidebar ul li a:focus,
+.GovDash-page .sidebar ul li a:active {
+    outline: none;
+    background-color: black;
+    transform: scale(1.05);
+    box-shadow: 0 0 5px #aaa;
+}
+
+.GovDash-page .main-content {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 300px;
+    margin-top: 40px;
+}
+
+.GovDash-page .header h1 {
+    font-size: 2rem;
+}
+
+.GovDash-page .menu-btn {
+    display: none;
+    font-size: 24px;
+    background: #f0f0f0;
+    color: black;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1100;
+    outline: none;
+}
+
+.GovDash-page .menu-btn:hover,
+.GovDash-page .menu-btn:focus,
+.GovDash-page .menu-btn:active {
+    opacity: 0;
+}
+
+.GovDash-page .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: none;
+    outline: none;
+    transition: opacity 0.3s;
+}
+
+.GovDash-page .welcome h2 {
+    text-align: center;
+    margin-top: 35px;
+    font-size: 35px;
+}
+
+.GovDash-page .welcome p {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+@media (max-width: 768px) {
+    .GovDash-page .sidebar {
+        width: 220px;
+        left: -220px;
+    }
+
+    .GovDash-page .sidebar h2 {
+        font-size: 17px;
+    }
+
+    .GovDash-page .sidebar.open {
+        left: 0;
+    }
+
+    .GovDash-page .close-btn {
+        display: block;
+    }
+
+    .GovDash-page .menu-btn {
+        display: block;
+    }
+
+    .GovDash-page .main-content {
+        margin-left: 0;
+    }
+
+    .GovDash-page .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .GovDash-page .sidebar ul li a {
+        font-size: 16px;
+        padding: 6px 8px;
+    }
+
+    .GovDash-page .welcome h2 {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 17px;
+    }
+
+    .GovDash-page .welcome p {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .GovDash-page .sidebar {
+        width: 200px;
+        left: -200px;
+    }
+
+    .GovDash-page .sidebar h2 {
+        font-size: 17px;
+    }
+
+    .GovDash-page .header h1 {
+        font-size: 1.2rem;
+    }
+
+    .GovDash-page .close-btn {
+        display: block;
+    }
+
+    .GovDash-page .menu-btn {
+        display: block;
+    }
+
+    .GovDash-page .sidebar ul li a {
+        font-size: 14px;
+        padding: 5px 6px;
+    }
+}

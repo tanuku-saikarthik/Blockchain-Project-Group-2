@@ -1,0 +1,291 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Container */
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    background: #2c3e50;
+    color: white;
+    height: 100vh;
+    padding: 25px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar h2 {
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+    color: #ecf0f1;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: #bdc3c7;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 12px 15px;
+    display: block;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li.active a {
+    background: #34495e;
+    color: #ecf0f1;
+    transform: translateX(5px);
+}
+
+/* Main Content */
+.main-content {
+    flex-grow: 1;
+    padding: 30px;
+    margin-left: 250px;
+    transition: all 0.3s;
+}
+
+.header {
+    margin: 30px 0;
+    font-size: 2rem;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+/* Grid Layout */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.grid-item {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.grid-item img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
+    transition: transform 0.3s ease;
+}
+
+.grid-item:hover img {
+    transform: scale(1.03);
+}
+
+/* Card Content */
+.card-content {
+    padding: 20px;
+}
+
+.property-status {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.status-available {
+    color: #27ae60;
+}
+
+.status-sold {
+    color: #e74c3c;
+}
+
+.property-location {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.property-details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.detail-item {
+    text-align: center;
+    flex: 1;
+}
+
+.detail-label {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 5px;
+}
+
+.detail-value {
+    font-weight: 600;
+    color: #34495e;
+    font-size: 1.1rem;
+}
+
+/* Modal Styling */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    text-align: center;
+    position: relative;
+}
+
+.modal-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+        left: -200px;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    .sidebar h2 {
+        font-size: 17px;
+    }
+
+    .sidebar ul li a {
+        font-size: 16px;
+        padding: 6px 8px;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .close-btn {
+        display: block;
+    }
+
+    .header {
+        font-size: 22px;
+        margin: 20px 0;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 250px;
+        left: -250px;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .menu-btn {
+        display: block;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 20px;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+    }
+
+    .btn-edit,
+    .btn-delete {
+        width: 100%;
+    }
+}

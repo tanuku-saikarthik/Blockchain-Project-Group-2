@@ -1,0 +1,269 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styling (Same as Seller Dashboard) */
+.sidebar {
+    width: 250px;
+    background: #000;
+    color: white;
+    height: 100vh;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+    transition: all 0.3s;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 10px;
+    display: block;
+    border-radius: 8px;
+    transition: all 0.3s;
+    outline: none;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a:focus,
+.sidebar ul li a:active {
+    outline: none;
+    background-color: black;
+    transform: scale(1.05);
+    box-shadow: 0 0 5px #aaa;
+}
+
+/* Active link style */
+.sidebar ul li.active a {
+    font-weight: bold;
+}
+
+/* Menu Button Styling */
+.menu-btn {
+    display: none;
+    font-size: 24px;
+    background: #444;
+    color: black;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1100;
+    outline: none;
+}
+
+.menu-btn:hover,
+.menu-btn:focus,
+.menu-btn:active {
+    opacity: 0;
+}
+
+/* Close Button Styling */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: none; /* Hidden by default */
+    outline: none;
+    transition: opacity 0.3s;
+}
+
+/* Main Content Styling */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 250px;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header Styling */
+.offers-header {
+    margin: 40px 0;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Offers Table Styles (for larger screens) */
+.offers-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.offers-table thead th {
+    background-color: #000;
+    color: #fff;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.offers-table tbody td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.offers-table tbody tr {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.offers-table tbody tr:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    background-color: #f9f9f9;
+}
+
+.offers-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Action Buttons */
+.accept-btn,
+.reject-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.accept-btn {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.accept-btn:hover {
+    background-color: #218838;
+}
+
+.reject-btn {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.reject-btn:hover {
+    background-color: #c82333;
+}
+
+/* Offers Cards for Mobile Devices (Option 2) */
+.offers-cards {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.offer-card {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+        left: -200px;
+    }
+    .sidebar h2 {
+        font-size: 17px;
+    }
+    .sidebar.open {
+        left: 0;
+    }
+    .close-btn {
+        display: block;
+    }
+    .main-content {
+        margin-left: 0;
+    }
+    .offers-header {
+        font-size: 22px;
+        margin: 20px 0;
+    }
+    .sidebar ul li a {
+        font-size: 16px;
+        padding: 6px 8px;
+    }
+    .menu-btn {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 180px;
+        left: -180px;
+    }
+    .sidebar h2 {
+        font-size: 17px;
+    }
+    .offers-header {
+        font-size: 22px;
+        margin: 10px 0;
+    }
+    .sidebar ul li a {
+        font-size: 14px;
+        padding: 5px 6px;
+    }
+    .menu-btn {
+        display: block;
+    }
+    .close-btn {
+        display: block;
+    }
+    /* Show cards and hide table on very small screens */
+    .offers-table {
+        display: none;
+    }
+    .offers-cards {
+        display: flex;
+    }
+}
