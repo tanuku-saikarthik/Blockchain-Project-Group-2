@@ -19,7 +19,6 @@ router.post('/transactions/:transactionId/reject-validation', authenticateToken,
 
 router.get('/transactions/validated', authenticateToken, getValidatedTransactions);
 
-router.post('/transactions/:transactionId/approve', authenticateToken, approveTransaction);
-router.post('/transactions/:transactionId/reject', authenticateToken, rejectTransaction);
+
 
 export default router;

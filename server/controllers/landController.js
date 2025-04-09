@@ -5,6 +5,8 @@ dotenv.config();
 import supabase from '../supabaseClient.js';
 import bcrypt from 'bcrypt';
 import landRegistryContract from '../smartContract.js';
+import listPropertyy from './bcController.js';
+import getAllProperties from './bcController.js';
 import { ethers } from 'ethers';
 
 
@@ -25,43 +27,55 @@ export const authenticate = (req, res, next) => {
 // Add Land
 export const addLand = async (req, res) => {
     const { is_for_sale, location, price, size, documentHash, document_url } = req.body;
-    const owner_id = req.userId; // The owner of the land is the logged-in user
+    const owner_id = req.userId;
   
     try {
-      console.log("Land details:", { is_for_sale, location, price, size }); // For debugging
-      console.log("Owner ID:", owner_id);
-  
-      // Insert land information into the database
+      // 1. Add to Supabase DB
       const { data, error } = await supabase
         .from('land')
-        .insert([{ owner_id, location, size, price, is_for_sale }]);
+        .insert([{ owner_id, location, size, price, is_for_sale }])
+        .select();
   
       if (error) throw error;
-      console.log("Land added successfully:", data); // For debugging
   
-      // Ensure that area is calculated or provided correctly (size is used here)
-      const area = size; // Adjust if size is not directly the area value
+      const area = BigInt(size); // Optional if you use it elsewhere
+      const priceInt = ethers.parseUnits(String(price), "ether");
+      const docRef = documentHash || document_url || "N/A";
   
-      // Interact with the smart contract for land listing
-      const tx = await landRegistryContract.listProperty(
-        location,
-        area, // ensure this is the correct value for area
-        ethers.parseUnits(String(price), "wei"),
-        documentHash || document_url || "" // Use documentHash or document_url, whichever is available
-      );
-  
+      // 2. Interact with Smart Contract
+      const tx = await landRegistryContract.listProperty(location, priceInt);
       const receipt = await tx.wait();
   
-      // Return success response
+      // 3. Fetch from on-chain
+      const count = await landRegistryContract.propertyCount();
+      const onChainLand = [];
+  
+      for (let i = 0; i < count; i++) {
+        const p = await landRegistryContract.properties(i);
+        onChainLand.push({
+          propertyId: i,
+          location: p.location,
+          askingPrice: ethers.formatEther(p.askingPrice),
+          status: p.status,
+          seller: p.seller,
+        });
+      }
+  
+      // 4. Send response once
       res.status(201).json({
         message: 'Land added successfully',
-        land: data, // Return data from the database insertion
-        contractTx: receipt.transactionHash
+        land: data[0],
+        contractTx: receipt.transactionHash,
+        onChainLand,
       });
+  
     } catch (err) {
+      console.error("Error adding land:", err);
       res.status(500).json({ error: err.message });
     }
   };
+  
+  
   
 
 // Fetch Lands

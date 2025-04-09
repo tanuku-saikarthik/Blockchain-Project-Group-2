@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { updateOffer, cancelOffer } from "../../API1"; // Adjust path as needed
 import { fetchAllLands, makeOffer } from "../../API"; // Adjust path as needed
 import "../Styles/Buyer/BuyerViewLand.css";
+import landImage from "./image.webp";
+
 
 const BuyerViewLand = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -152,7 +154,8 @@ const BuyerViewLand = () => {
         <div className="grid-container">
           {filteredLands.map((land) => (
             <div key={land.id} className="grid-item" onClick={() => handleLandClick(land)}>
-              <img src={"https://fastly.picsum.photos/id/17/2500/1667.jpg?hmac=HD-JrnNUZjFiP2UZQvWcKrgLoC_pc_ouUSWv8kHsJJY"} alt="Land" />
+              <img src={landImage} alt="Land" />
+
               <div className="details">
                 <p>Location: {land.location}</p>
                 <p>Size: {land.size} sq. meters</p>

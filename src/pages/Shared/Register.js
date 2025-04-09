@@ -194,19 +194,7 @@ const RegisterForm = () => {
             </Grid>
 
             {/* Aadhaar File URL */}
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                name="aadhaar_file_url"
-                label="Aadhaar File URL"
-                value={formData.aadhaar_file_url}
-                onChange={handleChange}
-                variant="outlined"
-                InputLabelProps={{ shrink: true }}
-                sx={{ backgroundColor: '#fff', borderRadius: 1 }}
-              />
-            </Grid>
-
+           
             {/* Wallet Button */}
             <Grid item xs={12}>
               <Button

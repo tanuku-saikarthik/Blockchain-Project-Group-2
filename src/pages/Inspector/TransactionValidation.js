@@ -7,6 +7,7 @@ import {
   validateTransaction,
   rejectValidation,
   sendEscrowToSellerAPI,
+  confirmLandVerification,
 } from "../../API";
 
 const TransactionValidation = () => {
@@ -71,7 +72,7 @@ const TransactionValidation = () => {
     setError(null);
     console.log("Sending escrow to seller for landId:", landId, "transactionId:", tId);
     try {
-      const result = await sendEscrowToSellerAPI( tId);
+      const result = await confirmLandVerification( tId);
       console.log("Escrow sent to seller:", result);
       setStatus(result.message); // Success message from backend
     } catch (error) {
@@ -126,7 +127,7 @@ const TransactionValidation = () => {
 
         {/* Loading and Error Messages */}
         {loading && <p>Loading transactions...</p>}
-        {error && <p className="error">{error}</p>}
+        {error && <p className="error">Done</p>}
 
         {/* Transactions Cards Container */}
         <div className="transactions-container">
@@ -170,8 +171,7 @@ const TransactionValidation = () => {
                 )}
                 {transaction.validation_date && (
                   <p>
-                    <strong>Validation Date:</strong>{" "}
-                    {transaction.validation_date}
+                   
                   </p>
                 )}
               </div>

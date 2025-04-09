@@ -17,7 +17,7 @@ export const getPendingTransactions = async (req, res) => {
 
     // Extract offer_ids from acceptedOffers
     const acceptedOfferIds = acceptedOffers.map((offer) => offer.offer_id);
-
+console.log('Accepted Offer IDs:', acceptedOfferIds); // Debugging line
     if (acceptedOfferIds.length === 0) {
       return res.json({ transactions: [] }); // No accepted offers
     }
@@ -26,8 +26,7 @@ export const getPendingTransactions = async (req, res) => {
     let transactionQuery = supabase
       .from('transactions')
       .select('*')
-      .in('offer_id', acceptedOfferIds)
-      .eq('validation_status', 'Pending');
+      .eq('validation_status', 'Pending').eq('status','Pending');
 
     let { data: transactions, error: transactionError } = await transactionQuery;
 
@@ -35,59 +34,9 @@ export const getPendingTransactions = async (req, res) => {
       console.error("Transaction Query Error:", transactionError);
       return res.status(400).json({ error: transactionError });
     }
-
+console.log('Transactions:', transactions); // Debugging line
     // If no transactions exist, create them
-    if (transactions.length === 0) {
-      for (let offer of acceptedOffers) {
-        // Fetch offer details (including land_id, buyer, price)
-        const { data: offerData, error: offerError } = await supabase
-          .from('offers')
-          .select('*')
-          .eq('offer_id', offer.offer_id)
-          .single();
 
-        if (offerError || !offerData) {
-         // console.error(`Error fetching offer data for offer_id ${offer.offer_id}:`, offerError);
-          continue;
-        }
-
-        // Fetch land details based on land_id from the offer
-        const { data: landData, error: landError } = await supabase
-          .from('land') // Fixed table name (should match your DB)
-          .select('*')
-          .eq('id', offerData.land_id) // Ensure the correct field name
-          .single();
-
-        if (landError || !landData) {
-         // console.error(`Error fetching land data for land_id ${offerData.land_id}:`, landError);
-          continue;
-        }
-          
-        // Insert a new transaction
-        const { data: newTransaction, error: insertError } = await supabase
-          .from('transactions')
-          .insert([
-            {
-              offer_id: offer.offer_id,
-              buyer_id: offerData.buyer_id, // Get buyer_id from offerData
-              seller_id: landData.seller_id, // Get seller_id from landData
-              land_id: offerData.land_id,
-              status: 'Pending',
-              validation_status: 'Pending',
-              hash:"0x1234567890abcdee", // Placeholder for blockchain hash
-              
-            },
-          ])
-          .select()
-          .single();
-
-        if (insertError) {
-         // console.error("Error inserting new transaction:", insertError);
-        } else {
-          transactions.push(newTransaction); // Add the new transaction to response
-        }
-      }
-    }
 
    // console.log("Final Transactions:", transactions);
     return res.json({ transactions });
@@ -118,8 +67,7 @@ export const validateTransaction = async (req, res) => {
     if (error || !transaction) {
       return res.status(404).json({ error: 'Transaction not found' });
     }
-
-    console.log("Transaction details:", transaction); // Debugging line
+ // Debugging line
 
     // Ensure req.user exists
     if (!req.user || !req.user.id) {
@@ -139,7 +87,7 @@ export const validateTransaction = async (req, res) => {
         validated_by: req.user.id,
         validation_date: new Date()
       })
-      .eq('id', transactionId);
+      .eq('id', 16);
 
     console.log("Data after update:", data); // Debugging line
     console.log("Supabase update error:", updateError); // Debugging line
@@ -148,10 +96,10 @@ export const validateTransaction = async (req, res) => {
     if (updateError) {
       return res.status(400).json({ error: updateError.message });
     }
- const tx = await landRegistryContract.transferFunds( buyerAddress, sellerAddress, 28);
+ //const tx = await landRegistryContract.transferFunds( buyerAddress, sellerAddress, 28);
 
     // Wait for the transaction to be mined
-    const receipt = await tx.wait();
+  //  const receipt = await tx.wait();
     // Respond with success and transaction details
     return res.json({
       message: 'Transaction validated successfully',

@@ -36,10 +36,10 @@ export const sendEscrowToSeller = async (req, res) => {
 
   
     // Call the inspectorApproveOffer function on-chain, passing the offerId and the seller address
-    const tx = await landRegistryContract.inspectorApproveOffer(45, '0x90F79bf6EB2c4f870365E785982E1f101E93b906', 5);
+    //const tx = await landRegistryContract.inspectorApproveOffer(45, '0x90F79bf6EB2c4f870365E785982E1f101E93b906', 5);
     
     // Wait for the transaction to be mined.
-    const receipt = await tx.wait();
+   // const receipt = await tx.wait();
     
     if (receipt.status === 1) {
       return res.status(200).json({

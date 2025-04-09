@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../Styles/Inspector/LandDetails.css";
-import { fetchLands } from "../../API1"; // Import the API function
+import { fetchLands } from "../../API"; // Import the API function
+
 
 const LandDetails = () => {
   const [menuOpen, setMenuOpen] = useState(false);

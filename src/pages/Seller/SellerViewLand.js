@@ -1,103 +1,3 @@
-// import { useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
-// import "../Styles/Seller/SellerViewLand.css";
-
-// const ViewLand = () => {
-//   const [menuOpen, setMenuOpen] = useState(false);
-//   const [selectedLand, setSelectedLand] = useState(null);
-
-//   const lands = [
-//     {
-//       id: 1,
-//       location: "Bangalore",
-//       size: "200.00",
-//       price: "5000000",
-//       is_for_sale: true,
-//       documents: ["/logo192.png"],
-//     },
-//     {
-//       id: 2,
-//       location: "Mysore",
-//       size: "300.00",
-//       price: "7500000",
-//       is_for_sale: false,
-//       documents: ["/logo512.png"],
-//     },
-//   ];
-
-//   const handleLandClick = (land) => {
-//     setSelectedLand(land);
-//   };
-
-//   const closeModal = () => {
-//     setSelectedLand(null);
-//   };
-
-//   return (
-//     <div className="container">
-//       <div className={`sidebar ${menuOpen ? "open" : ""}`}>
-//         <button className="close-btn" onClick={() => setMenuOpen(false)}>×</button>
-//         <h2>Seller Dashboard</h2>
-//         <ul>
-//           <li><Link to="/add-land">Add a Land</Link></li>
-//           <li className="active"><Link to="/view-land">View Your Lands</Link></li>
-//           <li><Link to="/pending-verifications">Pending Verifications</Link></li>
-//           <li><Link to="/buyer-offers">Buyer Offers</Link></li>
-//           <li><Link to="/transaction-history">Transaction History</Link></li>
-//           <li><Link to="/profile">Profile</Link></li>
-//         </ul>
-//       </div>
-
-//       {/* Main Content */}
-//       <div className="main-content">
-//         <button className="menu-btn" onClick={() => setMenuOpen(true)}>☰</button>
-//         <h2 className="header">View Your Lands</h2>
-//         <div className="grid-container">
-//           {lands.map((land) => (
-//             <div 
-//               key={land.id} 
-//               className="grid-item" 
-//               onClick={() => handleLandClick(land)}
-//             >
-//               <img src={land.documents[0]} alt="Land" />
-//               {/* Existing details remain in the markup but will be hidden in grid view */}
-//               <div className="details">
-//                 <p>Location: {land.location}</p>
-//                 <p>Size: {land.size} sq. meters</p>
-//                 <p>Price: ₹{land.price}</p>
-//                 <p>Status: {land.is_for_sale ? "For Sale" : "Not for Sale"}</p>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-
-//         {/* Land Details Modal */}
-//         {selectedLand && (
-//           <div className="modal">
-//             <div className="modal-content">
-//               <span className="close" onClick={closeModal}>&times;</span>
-//               <h3>Land Details</h3>
-//               <img src={selectedLand.documents[0]} alt="Land" />
-//               <p><strong>Location:</strong> {selectedLand.location}</p>
-//               <p><strong>Size:</strong> {selectedLand.size} sq. meters</p>
-//               <p><strong>Price:</strong> ₹{selectedLand.price}</p>
-//               <p><strong>Status:</strong> {selectedLand.is_for_sale ? "For Sale" : "Not for Sale"}</p>
-//             </div>
-//           </div>
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ViewLand;
-
-
-
-
-
-
-
 
 
 
@@ -108,6 +8,8 @@ import "./default.jpg"
 // import PropertyContract from "../../contracts/PropertyContract.json"; // Uncomment when adding contract ABI
 import { fetchLands, updateProperty, cancelPropertyListing } from "../../API"; // Import API functions
 import "../Styles/Seller/SellerViewLand.css";
+import landImage from "./image.webp";
+
 
 const ViewLand = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -230,7 +132,7 @@ const ViewLand = () => {
                   className="grid-item"
                   onClick={() => handleLandClick(land)}
                 >
-                  <img src={"https://picsum.photos/200/300"} alt="Land" />
+                  <img src={landImage} alt="Land" />
                 </div>
               ))
             ) : (
@@ -280,7 +182,7 @@ const ViewLand = () => {
                 </form>
               ) : (
                 <>
-                  <img src={selectedLand.documents?.[0] || "default-image.jpg"} alt="Land" />
+                  <img src={selectedLand.documents?.[0] || landImage} alt="Land" />
 
                   <p>
                     <strong>Location:</strong> {selectedLand.location}
@@ -295,8 +197,6 @@ const ViewLand = () => {
                     <strong>Status:</strong>{" "}
                     {selectedLand.is_for_sale ? "For Sale" : "Not for Sale"}
                   </p>
-                  <button onClick={handleEdit}>Edit</button>
-                  <button onClick={handleCancelPropertyListing}>Delete</button>
                 </>
               )}
             </div>

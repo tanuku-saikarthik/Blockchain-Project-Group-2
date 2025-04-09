@@ -208,7 +208,7 @@ export const fetchUnverifiedLands = async () => {
 
 export const confirmLandVerification = async (landId) => {
     try {
-        const response = await axios.put(`${API_BASE_URL}/api/lands/verify/${landId}`, {}, getAuthConfig());
+        const response = await axios.post(`${API_BASE_URL}/api/transactions/validate`, {landId}, getAuthConfig());
         return response.data;
     } catch (error) {
         console.error("Error confirming land verification:", error.response?.data || error.message);

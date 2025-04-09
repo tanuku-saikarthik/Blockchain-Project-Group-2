@@ -39,13 +39,13 @@ app.use('/api', statsRoutes);
 
 async function testConnection() {
   // Replace 'your_table' with an actual table name in your database.
-//  const { data, error } = await supabase.from('offers').select('*');
- // console.log('data:', data);
- // if (error) {
-  //  console.error('Error querying Supabase:', error);
- // } else {
+ const { data, error } = await supabase.from('transactions').select('*');
+ console.log('data:', data);
+ if (error) {
+   console.error('Error querying Supabase:', error);
+ } else {
     //console.log('Query successful, data:', data);
-//  }
+ }
 }
 
 
